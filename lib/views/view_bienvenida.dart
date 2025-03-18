@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proy_agenda/views/view_login.dart';
 import '../constantes.dart';
 class Bienvenida extends StatelessWidget {
   const Bienvenida({super.key});
@@ -33,7 +34,12 @@ class Bienvenida extends StatelessWidget {
                 SizedBox(
                   width: size.width * 0.6, // Ancho del 60% de la pantalla
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ViewLogin()),
+                      );
+                    },
                     child: Text("Empresa", style: TextStyle(fontSize: fBoton)),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
