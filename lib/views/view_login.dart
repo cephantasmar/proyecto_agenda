@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:proy_agenda/views/view_crearcuenta.dart';
+import 'package:proy_agenda/views/view_menu.dart';
+import '../Services/auth_service.dart';
 import '../constantes.dart';
 
-class ViewLogin extends StatelessWidget {
+class ViewLogin extends StatefulWidget {
   const ViewLogin({super.key});
+
+  @override
+  State<ViewLogin> createState() => _ViewLoginState();
+}
+
+class _ViewLoginState extends State<ViewLogin> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +46,18 @@ class ViewLogin extends StatelessWidget {
                 SizedBox(
                   width: size.width * 0.7, // Ancho del 60% de la pantalla
                   child: TextField(
+                    controller: emailController,
                     style: TextStyle(color: Color3, fontSize: fBoton),
                     decoration: InputDecoration(
-                      filled: true,
-                      fillColor: ColorLight,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide:  BorderSide.none
-                      ),
-                      hintText: 'Ingresa tu correo',
-                      hintStyle: TextStyle(color: Color3, fontSize: fBoton),
-                      prefixIcon: Icon(Icons.person, color: Color3)
+                        filled: true,
+                        fillColor: ColorLight,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25),
+                            borderSide:  BorderSide.none
+                        ),
+                        hintText: 'Ingresa tu correo',
+                        hintStyle: TextStyle(color: Color3, fontSize: fBoton),
+                        prefixIcon: Icon(Icons.person, color: Color3)
 
                     ),
                   ),
@@ -55,6 +68,7 @@ class ViewLogin extends StatelessWidget {
                 SizedBox(
                   width: size.width * 0.7, // Ancho del 60% de la pantalla
                   child: TextField(
+                    controller: passwordController,
                     style: TextStyle(color: Color3, fontSize: fBoton),
                     obscureText: true,
                     decoration: InputDecoration(
@@ -78,7 +92,13 @@ class ViewLogin extends StatelessWidget {
                 SizedBox(
                   width: size.width * 0.6, // Ancho del 60% de la pantalla
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed:() async{
+                        await AuthService().signin(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context:context
+                        );
+                        },
                     child: Text("Iniciar sesión", style: TextStyle(fontSize: fBoton)),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
@@ -91,11 +111,20 @@ class ViewLogin extends StatelessWidget {
                 SizedBox(
                   height: size.height*0.01,
                 ),
-                Text("¿No tienes? Crear una cuenta", style: TextStyle(
-                  fontSize: fCuerpo ,
-                  color: PrimaryColor ,
-                  fontWeight: FontWeight.bold,
-                ),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>ViewCrearcuenta()),
+                    );
+                  },
+                  child:Text("¿No tienes? Crear cuenta",
+                    style: TextStyle(
+                      fontSize: fCuerpo ,
+                      color: PrimaryColor ,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: size.height*0.01,
@@ -107,7 +136,7 @@ class ViewLogin extends StatelessWidget {
                 ),
                 ),
                 IconButton(onPressed: (){},
-                    icon:Image.asset("assets/Imagenes/google.png",height: 40),
+                  icon:Image.asset("assets/Imagenes/google.png",height: 40),
 
 
                 )
@@ -120,6 +149,9 @@ class ViewLogin extends StatelessWidget {
     );
   }
 }
+
+
+
 class BackgroundLogin extends StatelessWidget {
   const BackgroundLogin({super.key});
 
@@ -168,4 +200,5 @@ class BackgroundLogin extends StatelessWidget {
       ),
     );
   }
+
 }
