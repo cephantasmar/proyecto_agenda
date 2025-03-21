@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'view_empresas.dart';
+import 'view_citas.dart';
 
 class ViewMenu extends StatelessWidget {
-  const ViewMenu({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Text("hola")
-        ],
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Menú Principal'),
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Empresas'),
+              Tab(text: 'Mis Citas'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            ViewEmpresas(),
+            ViewCitas(),
+          ],
+        ),
       ),
     );
   }

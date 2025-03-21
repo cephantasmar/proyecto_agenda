@@ -1,11 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../Services/firestore_service.dart';
 import '../constantes.dart';
 import 'view_login.dart';
 import '../Services/auth_service.dart';
 class ViewCrearcuenta extends StatelessWidget {
-  ViewCrearcuenta({super.key});
+
+  final String tipoCuenta;
+  ViewCrearcuenta({required this.tipoCuenta});
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nombreController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +44,28 @@ class ViewCrearcuenta extends StatelessWidget {
                   height: size.height*0.02,
                 ),
                 SizedBox(
+                  width: size.width * 0.7,
+                  child: TextField(
+                    controller: _nombreController,
+                    style: TextStyle(color: Color3, fontSize: fBoton),
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: ColorLight,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25),
+                            borderSide:  BorderSide.none
+                        ),
+                        hintText: "Nombre de ${tipoCuenta}",
+                        hintStyle: TextStyle(color: Color3, fontSize: fBoton),
+                        prefixIcon: Icon(Icons.person, color: Color3)
+
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height*0.02,
+                ),
+                SizedBox(
                   width: size.width * 0.7, // Ancho del 60% de la pantalla
                   child: TextField(
                     controller: _emailController,
@@ -51,7 +79,7 @@ class ViewCrearcuenta extends StatelessWidget {
                         ),
                         hintText: 'Ingresa tu correo',
                         hintStyle: TextStyle(color: Color3, fontSize: fBoton),
-                        prefixIcon: Icon(Icons.person, color: Color3)
+                        prefixIcon: Icon(Icons.email, color: Color3)
 
                     ),
                   ),
@@ -90,8 +118,13 @@ class ViewCrearcuenta extends StatelessWidget {
                       await AuthService().signup(
                           email: _emailController.text,
                           password: _passwordController.text,
+                          nombre: _nombreController.text,
+                          tipoUsuario: tipoCuenta,
                           context:context
                       );
+
+                      
+
                     },
                     child: Text("Crear cuenta", style: TextStyle(fontSize: fBoton)),
                     style: TextButton.styleFrom(
@@ -114,7 +147,7 @@ class ViewCrearcuenta extends StatelessWidget {
                   child:Text("¿Tienes una cuenta? Iniciar sesión",
                     style: TextStyle(
                       fontSize: fCuerpo ,
-                      color: PrimaryColor ,
+                      color: Color4 ,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,
                   ),
@@ -148,13 +181,7 @@ class BackgroundLogin extends StatelessWidget {
               right: -50,
               child: Image.asset("assets/Imagenes/hoja2.png", width: size.width*0.5,)
           ),
-          Positioned(
-              bottom: -50,
 
-              left: -50,
-
-              child: Image.asset("assets/Imagenes/forma3.png", width: size.width*0.5,)
-          ),
           Positioned(
               top: 10,
               left: 10,

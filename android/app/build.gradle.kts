@@ -10,8 +10,8 @@ plugins {
 
 android {
     namespace = "com.example.proy_agenda"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 34
+    ndkVersion = "29.0.13113456"
 
 
 
@@ -29,8 +29,8 @@ android {
         applicationId = "com.example.proy_agenda"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 24
+        targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }

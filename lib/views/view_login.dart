@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:proy_agenda/Services/firestore_service.dart';
 import 'package:proy_agenda/views/view_crearcuenta.dart';
 import 'package:proy_agenda/views/view_menu.dart';
+import 'package:proy_agenda/views/view_tipo_cuenta.dart';
 import '../Services/auth_service.dart';
 import '../constantes.dart';
 
@@ -92,12 +94,14 @@ class _ViewLoginState extends State<ViewLogin> {
                 SizedBox(
                   width: size.width * 0.6, // Ancho del 60% de la pantalla
                   child: TextButton(
-                    onPressed:() async{
+                    onPressed:()async {
                         await AuthService().signin(
                         email: emailController.text,
                         password: passwordController.text,
                         context:context
                         );
+                        //crearUsuario("userId", "email", "nombre", "telefono");
+
                         },
                     child: Text("Iniciar sesión", style: TextStyle(fontSize: fBoton)),
                     style: TextButton.styleFrom(
@@ -114,13 +118,13 @@ class _ViewLoginState extends State<ViewLogin> {
                 GestureDetector(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>ViewCrearcuenta()),
+                      MaterialPageRoute(builder: (context)=>ViewTipoCuenta()),
                     );
                   },
                   child:Text("¿No tienes? Crear cuenta",
                     style: TextStyle(
                       fontSize: fCuerpo ,
-                      color: PrimaryColor ,
+                      color: Color4 ,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,
                     ),
@@ -169,13 +173,7 @@ class BackgroundLogin extends StatelessWidget {
               right: -50,
               child: Image.asset("assets/Imagenes/hoja2.png", width: size.width*0.5,)
           ),
-          Positioned(
-              bottom: -50,
 
-              left: -50,
-
-              child: Image.asset("assets/Imagenes/forma3.png", width: size.width*0.5,)
-          ),
           Positioned(
             top: 10,
               left: 10,
