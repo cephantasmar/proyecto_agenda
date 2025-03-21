@@ -53,7 +53,7 @@ class _ViewCitasState extends State<ViewCitas> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    "Empresa: ${cita["empresa"]}",
+                    "Empresa: ${cita["empresaID"]}",
                     style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.blueAccent),

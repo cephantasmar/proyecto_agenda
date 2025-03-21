@@ -29,6 +29,7 @@ class _ViewEmpresasState extends State<ViewEmpresas> {
               itemBuilder: (context, index) {
                 // Obtenemos la empresa actual
                 var empresa = snapshot.data?[index];
+
                 return Card(
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   elevation: 4,
@@ -43,16 +44,24 @@ class _ViewEmpresasState extends State<ViewEmpresas> {
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
-                      empresa["descripcion"] ?? "Descripción no disponible",
+                      empresa["horario"] ?? "Descripción no disponible",
                       style: TextStyle(fontSize: 14),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios),
                     onTap: () {
+                      print(empresa["nombre"]);
 
-                      MaterialPageRoute(
-                        builder: (context) => CitaEmpresa(empresa: empresa, empresaID: empresa),
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+
+                          builder: (context) => CitaEmpresa(empresa: empresa["nombre"], detalle: empresa["detalle"], direccion: empresa["detalle"], horario: empresa["horario"], email: empresa["email"], telefono: empresa["telefono"]),
+
+                        ),
                       );
                     },
+
                   ),
                 );
               },

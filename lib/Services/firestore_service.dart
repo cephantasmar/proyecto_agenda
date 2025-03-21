@@ -24,7 +24,7 @@ Future<List> getCitas(String uid) async {
   });
   return citas;
 }
-Future<void> crearCita(String clienteID, String empresaID, String estado, Timestamp fecha) async {
+Future<void> crearCitaf(String clienteID, String empresaID, String estado, String fecha) async {
   await FirebaseFirestore.instance.collection("citas").doc().set({
      "clienteID":clienteID,
      "empresaID":empresaID,
