@@ -11,35 +11,8 @@ CYYF Calendar es una aplicación móvil diseñada para permitir a los usuarios a
 
 ## Versión y Aprobación
 - **Versión:** 1.0  
-- **Fecha:** (Agregar fecha de aprobación)  
-- **Aprobado por:** (Agregar nombre del aprobador)  
+- **Fecha:** 21/3/25
 
-## Histórico de Revisiones
-| Versión | Fecha  | Detalle de Revisión y Cambios | Responsable/Autor |
-|---------|--------|--------------------------------|------------------|
-| 0.1     | 12/02 | Creación del documento         | Ritchie Yerko Michel Cano Poma |
-
-## Contenido del Proyecto
-1. **Inicio**
-   - Idea de la Aplicación
-   - Nombre y Logo
-   - Descripción y Ventaja Competitiva
-   - Valor del Producto
-2. **Análisis de Requerimientos**
-   - Requerimientos Funcionales y No Funcionales
-   - Historias de Usuario
-3. **Diseño**
-   - Diagramas de Actividades
-   - Experiencia de Usuario (UX) y Mockups
-   - Interfaz de Usuario (UI)
-4. **Desarrollo**
-   - Planificación del Proyecto
-   - Arquitectura del Sistema
-   - Modelado de Datos
-5. **Estabilización**
-   - Pruebas de Integración
-6. **Implementación**
-   - Manual de Uso
 
 ## Tecnologías Utilizadas
 - **Frontend:** Flutter
